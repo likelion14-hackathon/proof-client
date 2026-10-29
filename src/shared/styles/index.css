@@ -63,6 +63,19 @@ html {
   textarea {
     touch-action: manipulation;
   }
+
+  /* 홈 화면 앱에서 이미지/버튼을 길게 누르면 저장·복사 메뉴나 텍스트 선택이 떠서 웹페이지처럼 보인다 */
+  img,
+  svg {
+    -webkit-touch-callout: none;
+    -webkit-user-drag: none;
+  }
+
+  button,
+  [role='button'] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
 }
 
 html,
