@@ -34,14 +34,14 @@ export default function WeekScoreCards({
             }`}
           >
             <p
-              className={`text-[12px] leading-normal font-semibold tracking-[-0.24px] ${
+              className={`text-[12px] leading-normal font-semibold ${
                 selected ? 'text-off-white-sub' : 'text-text-secondary'
               }`}
             >
               {metric.label}
             </p>
             <p
-              className={`text-[24px] leading-normal font-semibold tracking-[-0.48px] ${
+              className={`text-[24px] leading-normal font-semibold ${
                 selected ? 'text-off-white' : 'text-text-primary'
               }`}
             >
@@ -52,7 +52,7 @@ export default function WeekScoreCards({
               />
             </p>
             <p
-              className={`text-[12px] leading-normal font-semibold tracking-[-0.24px] ${
+              className={`text-[12px] leading-normal font-semibold ${
                 selected ? 'text-off-white' : 'text-primary'
               }`}
             >

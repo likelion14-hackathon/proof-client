@@ -29,7 +29,7 @@ export default function WellnessPlanCtaPage() {
 
       <div className="px-5">
         <div className="flex flex-col gap-7.5">
-          <h1 className="text-text-primary text-center text-[26px] leading-10 font-semibold tracking-[-0.52px] break-keep">
+          <h1 className="text-text-primary text-center text-[26px] leading-10 font-semibold break-keep">
             {WELLNESS_PLAN_CTA.title[0]}
             <br />
             {WELLNESS_PLAN_CTA.title[1]}
@@ -38,10 +38,10 @@ export default function WellnessPlanCtaPage() {
           <div className="border-primary flex min-h-[121px] items-start gap-4 rounded-[20px] border-2 pt-[25px] pr-[24px] pb-[21px] pl-[25px]">
             <img src={rocket} alt="" className="h-[75px] w-[70px] shrink-0" />
             <div className="flex flex-col items-start gap-2">
-              <p className="text-primary text-[14px] font-semibold tracking-[-0.28px]">
+              <p className="text-primary text-[14px] font-semibold">
                 {WELLNESS_PLAN_CTA.cardTitle}
               </p>
-              <p className="text-text-secondary text-[12px] leading-5.5 font-medium tracking-[-0.24px] break-keep">
+              <p className="text-text-secondary text-[12px] leading-5.5 font-medium break-keep">
                 {WELLNESS_PLAN_CTA.cardDescription}
               </p>
             </div>

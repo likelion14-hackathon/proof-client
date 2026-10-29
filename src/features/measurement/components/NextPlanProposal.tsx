@@ -6,16 +6,18 @@ interface NextPlanProposalProps {
   description?: string
 }
 
-export default function NextPlanProposal({ description }: NextPlanProposalProps) {
+export default function NextPlanProposal({
+  description,
+}: NextPlanProposalProps) {
   return (
     <div className="bg-box-background border-outline border-y px-5 py-6.25">
       <div className="flex items-center gap-2">
-        <p className="text-text-primary text-[16px] leading-normal font-semibold tracking-[-0.32px]">
+        <p className="text-text-primary text-[16px] leading-normal font-semibold">
           {FINAL_REPORT_NEXT_PLAN.title}
         </p>
         <img src={calendarIcon} alt="" className="size-6" />
       </div>
-      <p className="text-text-secondary mt-5 text-[12px] leading-5 font-medium tracking-[-0.24px] break-keep">
+      <p className="text-text-secondary mt-5 text-[12px] leading-5 font-medium break-keep">
         {description ?? FINAL_REPORT_NEXT_PLAN.description}
       </p>
     </div>

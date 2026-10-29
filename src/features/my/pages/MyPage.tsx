@@ -10,17 +10,16 @@ import {
   MY_NOTIFICATION_SETTINGS,
   MY_PLAN_MENU_ITEMS,
 } from '@/features/my/constants'
-import BottomBar from '@/shared/components/BottomBar'
-import type { NavTabId } from '@/shared/components/BottomNav'
-import BottomNav from '@/shared/components/BottomNav'
-import Logo from '@/shared/components/Logo'
 import { useAuthStore } from '@/features/auth/store'
 import { useUserEmail, useUserName } from '@/features/auth/useUserName'
 import { signOut } from '@/features/auth/api'
 import { useCurrentPlanStats } from '@/features/plan/hooks/useCurrentPlanStats'
 import { useCurrentPlanSummary } from '@/features/home/hooks/useCurrentPlanSummary'
 import { useMeasurementStore } from '@/features/measurement/store'
-import { ApiError } from '@/shared/api/apiError'
+import { getErrorMessage } from '@/shared/api/apiError'
+import InlineMessage from '@/shared/components/InlineMessage'
+import SkeletonCard from '@/shared/components/SkeletonCard'
+import TabPageLayout from '@/shared/layouts/TabPageLayout'
 
 export default function MyPage() {
   const navigate = useNavigate()
@@ -28,18 +27,20 @@ export default function MyPage() {
   const name = useUserName()
   const logout = useAuthStore((state) => state.logout)
   // 진행률 바는 홈 화면과 동일한 API(GET /api/plans/current)를 그대로 재사용한다.
-  const { data: planSummary, error: planSummaryError } = useCurrentPlanSummary()
-  const { data: planStats, error: planStatsError } = useCurrentPlanStats()
+  const {
+    data: planSummary,
+    isPending: isPlanSummaryPending,
+    error: planSummaryError,
+  } = useCurrentPlanSummary()
+  const {
+    data: planStats,
+    isPending: isPlanStatsPending,
+    error: planStatsError,
+  } = useCurrentPlanStats()
   const offlineResult = useMeasurementStore((state) => state.offlineResult)
   const [notificationState, setNotificationState] = useState(() =>
     Object.fromEntries(MY_NOTIFICATION_SETTINGS.map((item) => [item.id, true])),
   )
-
-  const handleSelectTab = (id: NavTabId) => {
-    if (id === 'home') navigate('/')
-    if (id === 'plan') navigate('/plan')
-    if (id === 'record') navigate('/diary')
-  }
 
   const handleLogout = async () => {
     try {
@@ -53,18 +54,21 @@ export default function MyPage() {
   }
 
   return (
-    <div className="bg-off-white pb-bottom-bar min-h-screen-safe mx-auto w-full max-w-103.5">
-      <Logo />
-
+    <TabPageLayout tab="info">
       <div>
         <div className="px-5">
-          <h1 className="text-text-primary text-[26px] leading-10 font-semibold tracking-[-0.52px]">
+          <h1 className="text-text-primary text-[26px] leading-10 font-semibold">
             {name}
           </h1>
           {email && (
-            <p className="text-text-secondary mt-1 text-[14px] leading-4.5 font-semibold tracking-[-0.28px]">
+            <p className="text-text-secondary mt-1 text-[14px] leading-4.5 font-semibold">
               {email}
             </p>
+          )}
+
+          {isPlanSummaryPending && !planSummaryError && (
+            // CurrentPlanCard와 같은 높이
+            <SkeletonCard className="mt-7.5 h-34.75" />
           )}
 
           {planSummary && (
@@ -74,17 +78,18 @@ export default function MyPage() {
           )}
 
           {planSummary === null && (
-            <p className="text-text-secondary mt-7.5 text-[14px] font-medium break-keep">
+            <InlineMessage className="mt-7.5">
               진행 중인 플랜이 없어요.
-            </p>
+            </InlineMessage>
           )}
 
           {planSummaryError && (
-            <p className="text-highlight mt-7.5 text-[13px] font-semibold break-keep">
-              {planSummaryError instanceof ApiError
-                ? planSummaryError.message
-                : '플랜 진행 정보를 불러오지 못했어요.'}
-            </p>
+            <InlineMessage tone="error" className="mt-7.5">
+              {getErrorMessage(
+                planSummaryError,
+                '플랜 진행 정보를 불러오지 못했어요.',
+              )}
+            </InlineMessage>
           )}
 
           <div className="mt-2.5">
@@ -101,6 +106,13 @@ export default function MyPage() {
             />
           </div>
 
+          {isPlanStatsPending && !planStatsError && (
+            <div className="mt-2.5 flex gap-4">
+              <SkeletonCard compact className="h-24.5 flex-1" />
+              <SkeletonCard compact className="h-24.5 flex-1" />
+            </div>
+          )}
+
           {planStats && (
             <div className="mt-2.5">
               <MyStatCards stats={planStats} />
@@ -108,15 +120,16 @@ export default function MyPage() {
           )}
 
           {planStatsError && (
-            <p className="text-highlight mt-2.5 text-[13px] font-semibold break-keep">
-              {planStatsError instanceof ApiError
-                ? planStatsError.message
-                : '플랜 기록 통계를 불러오지 못했어요.'}
-            </p>
+            <InlineMessage tone="error" className="mt-2.5">
+              {getErrorMessage(
+                planStatsError,
+                '플랜 기록 통계를 불러오지 못했어요.',
+              )}
+            </InlineMessage>
           )}
         </div>
 
-        <h2 className="text-text-primary mt-7.5 px-5 text-[20px] leading-6 font-semibold tracking-[-0.4px]">
+        <h2 className="text-text-primary mt-7.5 px-5 text-[20px] leading-6 font-semibold">
           플랜
         </h2>
         <div className="mt-2.5">
@@ -129,7 +142,7 @@ export default function MyPage() {
           ))}
         </div>
 
-        <h2 className="text-text-primary mt-7.5 px-5 text-[20px] leading-6 font-semibold tracking-[-0.4px]">
+        <h2 className="text-text-primary mt-7.5 px-5 text-[20px] leading-6 font-semibold">
           알림
         </h2>
         <div className="mt-2.5">
@@ -149,7 +162,7 @@ export default function MyPage() {
           ))}
         </div>
 
-        <h2 className="text-text-primary mt-7.5 px-5 text-[20px] leading-6 font-semibold tracking-[-0.4px]">
+        <h2 className="text-text-primary mt-7.5 px-5 text-[20px] leading-6 font-semibold">
           계정
         </h2>
         <div className="mt-2.5">
@@ -163,10 +176,6 @@ export default function MyPage() {
           ))}
         </div>
       </div>
-
-      <BottomBar>
-        <BottomNav current="info" onSelect={handleSelectTab} />
-      </BottomBar>
-    </div>
+    </TabPageLayout>
   )
 }

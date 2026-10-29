@@ -23,12 +23,8 @@ export default function WellnessSpendCard({
         <img src={icon} alt="" className={iconClassName} />
       </div>
       <div className="flex flex-col items-start gap-2">
-        <p className="text-text-secondary text-[14px] font-medium tracking-[-0.28px]">
-          {label}
-        </p>
-        <p className="text-text-primary text-[24px] font-semibold tracking-[-0.48px]">
-          {value}
-        </p>
+        <p className="text-text-secondary text-[14px] font-medium">{label}</p>
+        <p className="text-text-primary text-[24px] font-semibold">{value}</p>
       </div>
     </div>
   )

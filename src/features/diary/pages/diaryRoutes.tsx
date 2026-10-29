@@ -1,70 +1,47 @@
-/* eslint-disable react-refresh/only-export-components */
-import { lazy } from 'react'
 import type { RouteObject } from 'react-router-dom'
-import { withSuspense } from '@/shared/utils/withSuspense'
-
-const DiaryCalendar = lazy(() => import('@/features/diary/pages/DiaryCalendar'))
-const DiaryPhotoSelect = lazy(
-  () => import('@/features/diary/pages/DiaryPhotoSelect'),
-)
-const DiaryPhotoCapture = lazy(
-  () => import('@/features/diary/pages/DiaryPhotoCapture'),
-)
-const DiaryPhotoCaptureComplete = lazy(
-  () => import('@/features/diary/pages/DiaryPhotoCaptureComplete'),
-)
-const DiaryAnalyzeInProgress = lazy(
-  () => import('@/features/diary/pages/DiaryAnalyzeInProgress'),
-)
-const DiaryRecordScoreStep = lazy(
-  () => import('@/features/diary/pages/DiaryRecordScoreStep'),
-)
-const DiaryRecordChecklist = lazy(
-  () => import('@/features/diary/pages/DiaryRecordChecklist'),
-)
-const DiaryRecordDiary = lazy(
-  () => import('@/features/diary/pages/DiaryRecordDiary'),
-)
+import { lazyPage } from '@/shared/utils/lazyPage'
 
 export const DiaryRoutes: RouteObject[] = [
   {
     index: true,
-    element: withSuspense(<DiaryCalendar />),
+    ...lazyPage(() => import('@/features/diary/pages/DiaryCalendar')),
     handle: { title: '기록' },
   },
   {
     path: 'photo-select',
-    element: withSuspense(<DiaryPhotoSelect />),
+    ...lazyPage(() => import('@/features/diary/pages/DiaryPhotoSelect')),
     handle: { title: '오늘의 기록' },
   },
   {
     path: 'photo-capture',
-    element: withSuspense(<DiaryPhotoCapture />),
+    ...lazyPage(() => import('@/features/diary/pages/DiaryPhotoCapture')),
     handle: { title: '오늘의 기록' },
   },
   {
     path: 'photo-capture/complete',
-    element: withSuspense(<DiaryPhotoCaptureComplete />),
+    ...lazyPage(
+      () => import('@/features/diary/pages/DiaryPhotoCaptureComplete'),
+    ),
     handle: { title: '오늘의 기록' },
   },
   {
     path: 'analyze',
-    element: withSuspense(<DiaryAnalyzeInProgress />),
+    ...lazyPage(() => import('@/features/diary/pages/DiaryAnalyzeInProgress')),
     handle: { title: '분석 중' },
   },
   {
     path: 'record/:step',
-    element: withSuspense(<DiaryRecordScoreStep />),
+    ...lazyPage(() => import('@/features/diary/pages/DiaryRecordScoreStep')),
     handle: { title: '오늘의 기록' },
   },
   {
     path: 'record/checklist',
-    element: withSuspense(<DiaryRecordChecklist />),
+    ...lazyPage(() => import('@/features/diary/pages/DiaryRecordChecklist')),
     handle: { title: '오늘의 기록' },
   },
   {
     path: 'record/diary',
-    element: withSuspense(<DiaryRecordDiary />),
+    ...lazyPage(() => import('@/features/diary/pages/DiaryRecordDiary')),
     handle: { title: '오늘의 기록' },
   },
 ]

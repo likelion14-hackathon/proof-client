@@ -22,10 +22,10 @@ export default function ReportGeneratingPage() {
       <Logo />
 
       <div className="px-5">
-        <p className="text-text-secondary text-[15px] leading-normal font-semibold tracking-[-0.3px]">
+        <p className="text-text-secondary text-[15px] leading-normal font-semibold">
           리포트
         </p>
-        <h1 className="text-text-primary mt-2.75 text-[26px] leading-10 font-semibold tracking-[-0.52px] break-keep">
+        <h1 className="text-text-primary mt-2.75 text-[26px] leading-10 font-semibold break-keep">
           리포트를 생성하고 있어요
         </h1>
       </div>

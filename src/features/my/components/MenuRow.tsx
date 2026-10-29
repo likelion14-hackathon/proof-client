@@ -23,14 +23,14 @@ export default function MenuRow({
     >
       <span className="min-w-0">
         <span
-          className={`block text-[16px] leading-4.75 font-semibold tracking-[-0.32px] ${
+          className={`block text-[16px] leading-4.75 font-semibold ${
             highlighted ? 'text-highlight' : 'text-text-primary'
           }`}
         >
           {title}
         </span>
         {description && (
-          <span className="text-text-secondary mt-2 block text-[14px] leading-4.5 font-medium tracking-[-0.28px]">
+          <span className="text-text-secondary mt-2 block text-[14px] leading-4.5 font-medium">
             {description}
           </span>
         )}

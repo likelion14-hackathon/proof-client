@@ -12,7 +12,7 @@ export default function PlanDetailSection({
 }: PlanDetailSectionProps) {
   return (
     <div className="w-full">
-      <h2 className="text-text-primary px-5 text-[16px] leading-4.75 font-semibold tracking-[-0.32px]">
+      <h2 className="text-text-primary px-5 text-[16px] leading-4.75 font-semibold">
         상세보기
       </h2>
 

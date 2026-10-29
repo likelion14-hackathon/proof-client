@@ -25,15 +25,15 @@ export default function ContributionRow({ item }: ContributionRowProps) {
       <div className="flex items-end justify-between gap-2">
         <div className="flex items-end gap-2.5">
           <span
-            className={`${tag.colorClass} text-off-white shrink-0 rounded-[5px] pt-0.75 pr-2 pb-0.5 pl-1.75 text-[11px] leading-normal font-medium tracking-[-0.22px]`}
+            className={`${tag.colorClass} text-off-white shrink-0 rounded-[5px] pt-0.75 pr-2 pb-0.5 pl-1.75 text-[11px] leading-normal font-medium`}
           >
             {tag.label}
           </span>
-          <span className="text-text-primary text-[14px] leading-normal font-semibold tracking-[-0.28px]">
+          <span className="text-text-primary text-[14px] leading-normal font-semibold">
             {item.name}
           </span>
         </div>
-        <span className="text-primary shrink-0 text-[14px] leading-normal font-semibold tracking-[-0.28px]">
+        <span className="text-primary shrink-0 text-[14px] leading-normal font-semibold">
           {contributed ? (
             <AnimatedNumber
               value={item.score}
@@ -47,7 +47,7 @@ export default function ContributionRow({ item }: ContributionRowProps) {
       </div>
 
       {item.confidence ? (
-        <div className="flex items-center justify-between gap-2 text-[12px] leading-normal font-semibold tracking-[-0.24px]">
+        <div className="flex items-center justify-between gap-2 text-[12px] leading-normal font-semibold">
           <span
             className={
               item.confidence.tone === 'high'
@@ -66,7 +66,7 @@ export default function ContributionRow({ item }: ContributionRowProps) {
           </span>
         </div>
       ) : (
-        <p className="text-text-secondary text-right text-[12px] leading-normal font-medium tracking-[-0.24px]">
+        <p className="text-text-secondary text-right text-[12px] leading-normal font-medium">
           지표 변화가 관측되지 않음
         </p>
       )}

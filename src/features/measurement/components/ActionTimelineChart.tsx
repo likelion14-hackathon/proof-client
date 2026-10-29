@@ -23,7 +23,7 @@ export default function ActionTimelineChart({
     <div className="w-full">
       <div className="flex">
         <span className={LABEL_COLUMN} aria-hidden="true" />
-        <div className="text-text-secondary flex flex-1 justify-between text-[10px] leading-3 font-semibold tracking-[-0.2px]">
+        <div className="text-text-secondary flex flex-1 justify-between text-[10px] leading-3 font-semibold">
           {PLAN_TIMELINE_WEEK_MARKERS.map((week, index) => (
             <span
               key={week}
@@ -43,7 +43,7 @@ export default function ActionTimelineChart({
         {rows.map((row) => (
           <div key={row.label} className="flex items-center">
             <span
-              className={`${LABEL_COLUMN} text-text-primary text-[11px] leading-3.25 font-semibold tracking-[-0.22px]`}
+              className={`${LABEL_COLUMN} text-text-primary text-[11px] leading-3.25 font-semibold`}
             >
               {row.label}
             </span>
@@ -59,7 +59,7 @@ export default function ActionTimelineChart({
         ))}
       </div>
 
-      <div className="text-text-secondary mt-2.75 flex items-center gap-3 text-[10px] leading-3 font-semibold tracking-[-0.2px]">
+      <div className="text-text-secondary mt-2.75 flex items-center gap-3 text-[10px] leading-3 font-semibold">
         <span className="flex items-center gap-1">
           <span className="bg-primary size-2 rounded-[2px]" />
           실천

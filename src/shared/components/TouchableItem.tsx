@@ -21,14 +21,14 @@ export default function TouchableItem({
       }`}
     >
       <span
-        className={`w-full truncate text-[16px] leading-4.75 font-semibold tracking-[-0.32px] ${
+        className={`w-full truncate text-[16px] leading-4.75 font-semibold ${
           selected ? 'text-off-white' : 'text-text-primary'
         }`}
       >
         {title}
       </span>
       <span
-        className={`w-full truncate text-[13px] leading-4 font-medium tracking-[-0.26px] ${
+        className={`w-full truncate text-[13px] leading-4 font-medium ${
           selected ? 'text-off-white-sub' : 'text-text-secondary'
         }`}
       >

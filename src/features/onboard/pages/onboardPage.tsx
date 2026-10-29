@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import OnboardingSlider from '@/features/onboard/components/OnboardingSlider'
 import { onboardingData } from '@/features/onboard/data/onboardingData'
-import pfOnboardImg from '@/shared/assets/icons/PF_ONBOARD.svg'
+import pfOnboardImg from '@/shared/assets/images/onboard-bg.webp'
 import proofLogo from '@/shared/assets/icons/proof-logo-light.svg'
 import LoginModal from '@/features/onboard/components/LoginModal'
 import { useThemeColor } from '@/shared/hooks/useThemeColor'
@@ -61,7 +61,7 @@ const OnboardingPage: React.FC = () => {
 
   return (
     <div
-      className="min-h-screen-safe tracking-2p relative mx-auto flex w-full max-w-md flex-col overflow-hidden bg-black"
+      className="min-h-screen-safe relative mx-auto flex w-full max-w-md flex-col overflow-hidden bg-black"
       style={{ height: screenHeight }}
     >
       <div
@@ -72,7 +72,9 @@ const OnboardingPage: React.FC = () => {
         <div className="absolute inset-0 z-0">
           <img
             src={pfOnboardImg}
-            alt="Background Forest"
+            alt=""
+            fetchPriority="high"
+            decoding="async"
             className="h-full w-full object-cover"
           />
         </div>
@@ -97,7 +99,7 @@ const OnboardingPage: React.FC = () => {
         <footer className="z-10 flex w-full flex-col items-center gap-4 px-6 pb-[max(40px,env(safe-area-inset-bottom))]">
           <button
             onClick={() => openLoginModal('measurement')}
-            className="flex h-14 w-full items-center justify-center gap-2.5 rounded-[10px] bg-[#2A5A29A3] px-5 text-center font-['Pretendard'] text-base font-normal text-white backdrop-blur-[2px] transition-all active:scale-[0.98]"
+            className="flex h-14 w-full items-center justify-center gap-2.5 rounded-[10px] bg-[#2A5A29A3] px-5 text-center text-base font-normal text-white backdrop-blur-[2px] transition-all active:scale-[0.98]"
           >
             오프라인 측정 결과 불러오기
           </button>
@@ -106,7 +108,7 @@ const OnboardingPage: React.FC = () => {
             <span>아직 고민 중이신가요?</span>
             <button
               onClick={() => openLoginModal('trial')}
-              className="font-['Pretendard'] font-normal text-white underline"
+              className="font-normal text-white underline"
             >
               체험해보기
             </button>

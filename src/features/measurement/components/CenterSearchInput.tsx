@@ -22,7 +22,7 @@ export default function CenterSearchInput({
         onChange={(event) => onChange(event.target.value)}
         placeholder="센터 명을 입력하세요"
         aria-label="센터 검색"
-        className="text-text-primary placeholder:text-text-secondary min-w-0 flex-1 bg-transparent text-[15px] font-medium tracking-[-0.3px] outline-none"
+        className="text-text-primary placeholder:text-text-secondary min-w-0 flex-1 bg-transparent text-[15px] font-medium outline-none"
       />
     </div>
   )

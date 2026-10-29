@@ -20,15 +20,15 @@ export default function CostRow({ item }: CostRowProps) {
     <div className="border-outline flex items-end justify-between gap-2 border-b px-5 py-5">
       <div className="flex items-end gap-2.5">
         <span
-          className={`${PLAN_CATEGORY_TAG[item.category].colorClass} text-off-white shrink-0 rounded-[5px] pt-0.75 pr-2 pb-0.5 pl-1.75 text-[11px] leading-normal font-medium tracking-[-0.22px]`}
+          className={`${PLAN_CATEGORY_TAG[item.category].colorClass} text-off-white shrink-0 rounded-[5px] pt-0.75 pr-2 pb-0.5 pl-1.75 text-[11px] leading-normal font-medium`}
         >
           {PLAN_CATEGORY_TAG[item.category].label}
         </span>
-        <span className="text-text-primary text-[14px] leading-normal font-semibold tracking-[-0.28px]">
+        <span className="text-text-primary text-[14px] leading-normal font-semibold">
           {item.name}
         </span>
       </div>
-      <span className="text-primary shrink-0 text-[14px] leading-normal font-semibold tracking-[-0.28px]">
+      <span className="text-primary shrink-0 text-[14px] leading-normal font-semibold">
         {item.costPerPoint <= 0 ? (
           '비용 없음'
         ) : useManwon ? (

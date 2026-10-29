@@ -48,6 +48,11 @@ export function toApiError(error: unknown): ApiError {
   return new ApiError(FALLBACK_MESSAGE, null, null)
 }
 
+/** 화면에 보여줄 에러 문구. 서버가 준 메시지가 있으면 그것을, 없으면 fallback을 쓴다 */
+export function getErrorMessage(error: unknown, fallback: string): string {
+  return error instanceof ApiError ? error.message : fallback
+}
+
 export function unwrap<T>(envelope: ApiEnvelope<T>): T {
   assertSuccess(envelope)
   if (envelope.data === null) {

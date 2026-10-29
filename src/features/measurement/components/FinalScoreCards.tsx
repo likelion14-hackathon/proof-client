@@ -34,7 +34,7 @@ export default function FinalScoreCards({
             }`}
           >
             <p
-              className={`text-[12px] leading-normal font-semibold tracking-[-0.24px] ${
+              className={`text-[12px] leading-normal font-semibold ${
                 selected ? 'text-off-white-sub' : 'text-text-secondary'
               }`}
             >
@@ -42,7 +42,7 @@ export default function FinalScoreCards({
             </p>
             <div className="flex flex-col gap-px">
               <p
-                className={`text-[24px] leading-normal font-semibold tracking-[-0.48px] ${
+                className={`text-[24px] leading-normal font-semibold ${
                   selected ? 'text-off-white' : 'text-text-primary'
                 }`}
               >
@@ -53,7 +53,7 @@ export default function FinalScoreCards({
                 />
               </p>
               <p
-                className={`flex items-center gap-1 text-[11px] leading-4 tracking-[-0.22px] ${
+                className={`flex items-center gap-1 text-[11px] leading-4 ${
                   selected ? 'text-score' : 'text-text-secondary'
                 }`}
               >
@@ -63,7 +63,7 @@ export default function FinalScoreCards({
               </p>
             </div>
             <p
-              className={`text-[12px] leading-normal font-semibold tracking-[-0.24px] ${
+              className={`text-[12px] leading-normal font-semibold ${
                 selected ? 'text-off-white' : 'text-primary'
               }`}
             >

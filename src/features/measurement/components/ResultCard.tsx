@@ -17,7 +17,9 @@ interface ResultCardProps {
   metrics?: { pigmentation: number; pores: number; erythema: number }
 }
 
-export default function ResultCard({ metrics: metricsProp }: ResultCardProps = {}) {
+export default function ResultCard({
+  metrics: metricsProp,
+}: ResultCardProps = {}) {
   const offlineResult = useMeasurementStore((state) => state.offlineResult)
   const userName = useUserName()
 
@@ -46,11 +48,15 @@ export default function ResultCard({ metrics: metricsProp }: ResultCardProps = {
 
   const lowest = [...baseMetrics].sort((a, b) => a.percentage - b.percentage)[0]
 
-  const metrics: { label: string; percentage: number; tone: MetricTone; status: string }[] =
-    baseMetrics.map((metric) => ({
-      ...metric,
-      tone: metric.label === lowest.label ? 'primary' : 'dark',
-    }))
+  const metrics: {
+    label: string
+    percentage: number
+    tone: MetricTone
+    status: string
+  }[] = baseMetrics.map((metric) => ({
+    ...metric,
+    tone: metric.label === lowest.label ? 'primary' : 'dark',
+  }))
   const insight = realMetrics
     ? `${lowest.label} 지표가 세 항목 중 가장 낮은 상태예요. 12주 플랜을 구성할 때에는 이 지표를 1순위로 구성할 예정이에요!`
     : MEASUREMENT_RESULT.insight
@@ -65,13 +71,13 @@ export default function ResultCard({ metrics: metricsProp }: ResultCardProps = {
       <div className="flex gap-2.5">
         <div className="bg-primary size-7.5 shrink-0 rounded-full" />
         <div className="mt-1.5 min-w-0 flex-1 space-y-2">
-          <p className="text-text-primary text-[15px] leading-4.5 font-semibold tracking-[-0.3px]">
+          <p className="text-text-primary text-[15px] leading-4.5 font-semibold">
             {userName}
           </p>
-          <p className="text-text-secondary text-[12px] leading-3.75 font-semibold tracking-[-0.24px]">
+          <p className="text-text-secondary text-[12px] leading-3.75 font-semibold">
             {measuredAt}
           </p>
-          <p className="text-text-secondary text-[12px] leading-3.75 font-semibold tracking-[-0.24px]">
+          <p className="text-text-secondary text-[12px] leading-3.75 font-semibold">
             {centerName}
           </p>
         </div>
@@ -99,14 +105,14 @@ export default function ResultCard({ metrics: metricsProp }: ResultCardProps = {
               </div>
             </div>
             <p
-              className={`mt-2.5 text-center text-[16px] leading-4.75 font-semibold tracking-[-0.32px] break-keep ${
+              className={`mt-2.5 text-center text-[16px] leading-4.75 font-semibold break-keep ${
                 metric.tone === 'primary' ? 'text-primary' : 'text-text-primary'
               }`}
             >
               {metric.label}
             </p>
             <p
-              className={`mt-2.5 text-center text-[12px] leading-3.75 font-semibold tracking-[-0.24px] break-keep ${
+              className={`mt-2.5 text-center text-[12px] leading-3.75 font-semibold break-keep ${
                 metric.tone === 'primary'
                   ? 'text-primary'
                   : 'text-text-secondary'
@@ -119,7 +125,7 @@ export default function ResultCard({ metrics: metricsProp }: ResultCardProps = {
       </div>
 
       <div className="border-outline bg-off-white mt-9.25 rounded-[10px] border px-3.25 py-3.75">
-        <p className="text-primary text-[13px] leading-6.25 font-semibold tracking-[-0.26px]">
+        <p className="text-primary text-[13px] leading-6.25 font-semibold">
           {insight}
         </p>
       </div>

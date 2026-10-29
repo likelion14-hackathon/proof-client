@@ -23,7 +23,7 @@ export default function PlanTimelineSection({
 }: PlanTimelineSectionProps) {
   const insightBox = insight ? (
     <div className="border-outline bg-off-white mt-4.75 flex items-center justify-center rounded-[10px] border px-5 pt-3 pb-2.75">
-      <p className="text-primary text-[12px] leading-5 font-semibold tracking-[-0.24px]">
+      <p className="text-primary text-[12px] leading-5 font-semibold">
         {insight}
       </p>
     </div>
@@ -33,7 +33,7 @@ export default function PlanTimelineSection({
     <div className={insightPosition === 'above' ? 'mt-7' : 'mt-5.5'}>
       <div className="flex">
         <span className={LABEL_COLUMN} aria-hidden="true" />
-        <div className="text-text-secondary flex flex-1 justify-between text-[10px] leading-3 font-semibold tracking-[-0.2px]">
+        <div className="text-text-secondary flex flex-1 justify-between text-[10px] leading-3 font-semibold">
           {weekMarkers.map((week, index) => (
             <span
               key={week}
@@ -49,7 +49,7 @@ export default function PlanTimelineSection({
         {rows.map((row) => (
           <div key={row.category} className="flex items-center">
             <span
-              className={`${LABEL_COLUMN} text-text-primary text-[11px] leading-3.25 font-semibold tracking-[-0.22px]`}
+              className={`${LABEL_COLUMN} text-text-primary text-[11px] leading-3.25 font-semibold`}
             >
               {row.label}
             </span>
@@ -71,7 +71,7 @@ export default function PlanTimelineSection({
 
   return (
     <div className="w-full px-5">
-      <h2 className="text-text-primary text-[16px] leading-4.75 font-semibold tracking-[-0.32px]">
+      <h2 className="text-text-primary text-[16px] leading-4.75 font-semibold">
         타임라인
       </h2>
 

@@ -30,7 +30,7 @@ export default function WellnessSpendSummaryPage() {
 
       <div className="px-13.5">
         <div className="flex flex-col items-center gap-15.5">
-          <h1 className="text-text-primary text-center text-[26px] leading-10 font-semibold tracking-[-0.52px] break-keep">
+          <h1 className="text-text-primary text-center text-[26px] leading-10 font-semibold break-keep">
             {userName}
             {WELLNESS_SPEND_SUMMARY.title[0]}
             <br />
@@ -39,10 +39,10 @@ export default function WellnessSpendSummaryPage() {
 
           <div className="flex w-full flex-col items-center gap-8.75">
             <div className="flex flex-col items-center gap-3.75 text-center">
-              <p className="text-text-secondary text-[14px] font-medium tracking-[-0.28px]">
+              <p className="text-text-secondary text-[14px] font-medium">
                 {WELLNESS_SPEND_SUMMARY.wasteCostLabel}
               </p>
-              <p className="text-primary text-[28px] font-semibold tracking-[-0.56px]">
+              <p className="text-primary text-[28px] font-semibold">
                 <NumberFlow value={displayWasteCost} suffix="원" />
               </p>
             </div>

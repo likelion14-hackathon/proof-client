@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import navHome from '@/shared/assets/icons/nav-home.svg'
 import navInfo from '@/shared/assets/icons/nav-info.svg'
 import navPlan from '@/shared/assets/icons/nav-plan.svg'
@@ -10,30 +11,75 @@ export type NavTabId = 'home' | 'plan' | 'record' | 'info'
 interface NavTab {
   id: NavTabId
   label: string
+  path: string
   icon: string
   iconClass: string
+  /** 탭 화면 청크. 탭을 누르기 전에 미리 받아 두어 전환 시 대기 시간을 없앤다 */
+  preload: () => Promise<unknown>
 }
 
 const TABS: NavTab[] = [
-  { id: 'home', label: '홈', icon: navHome, iconClass: 'size-4' },
-  { id: 'plan', label: '플랜', icon: navPlan, iconClass: 'size-4' },
-  { id: 'record', label: '기록', icon: navRecord, iconClass: 'size-4' },
-  { id: 'info', label: '정보', icon: navInfo, iconClass: 'h-4 w-3.5' },
+  {
+    id: 'home',
+    label: '홈',
+    path: '/',
+    icon: navHome,
+    iconClass: 'size-4',
+    preload: () => import('@/features/home/pages/HomePage'),
+  },
+  {
+    id: 'plan',
+    label: '플랜',
+    path: '/plan',
+    icon: navPlan,
+    iconClass: 'size-4',
+    preload: () => import('@/features/plan/pages/PlanPage'),
+  },
+  {
+    id: 'record',
+    label: '기록',
+    path: '/diary',
+    icon: navRecord,
+    iconClass: 'size-4',
+    // react-day-picker/date-fns를 포함해 탭 중 가장 무겁다.
+    preload: () => import('@/features/diary/pages/DiaryCalendar'),
+  },
+  {
+    id: 'info',
+    label: '정보',
+    path: '/my',
+    icon: navInfo,
+    iconClass: 'h-4 w-3.5',
+    preload: () => import('@/features/my/pages/MyPage'),
+  },
 ]
+
+/** 첫 화면 렌더링을 방해하지 않도록 브라우저가 한가할 때 실행한다 */
+function runWhenIdle(task: () => void) {
+  if ('requestIdleCallback' in window) {
+    const id = window.requestIdleCallback(task, { timeout: 2000 })
+    return () => window.cancelIdleCallback(id)
+  }
+  const id = setTimeout(task, 300)
+  return () => clearTimeout(id)
+}
 
 interface BottomNavProps {
   current: NavTabId
-  onSelect?: (id: NavTabId) => void
 }
 
-export default function BottomNav({ current, onSelect }: BottomNavProps) {
-  useEffect(() => {
-    // '기록' 탭 청크는 react-day-picker/date-fns를 물고 있어 유독 무거워서,
-    // 클릭 시점에 처음 로드하면 Suspense fallback(null) 구간 동안 화면 전체가
-    // 잠깐 비었다 다시 그려지며 nav바가 순간 사라졌다 나타나는 것처럼 보인다.
-    // 눌리기 전에 미리 로드해 그 공백을 없앤다.
-    import('@/features/diary/pages/DiaryCalendar')
-  }, [])
+export default function BottomNav({ current }: BottomNavProps) {
+  const navigate = useNavigate()
+
+  useEffect(
+    () =>
+      runWhenIdle(() => {
+        TABS.forEach((tab) => {
+          if (tab.id !== current) tab.preload().catch(() => {})
+        })
+      }),
+    [current],
+  )
 
   return (
     <nav className="border-nav-border bg-nav-background flex h-15 gap-0 rounded-[100px] border p-0.75 shadow-[0px_0px_8.3px_-5px_rgba(0,0,0,0.25)] backdrop-blur-[2px]">
@@ -43,9 +89,11 @@ export default function BottomNav({ current, onSelect }: BottomNavProps) {
           <button
             key={tab.id}
             type="button"
-            onClick={() => onSelect?.(tab.id)}
+            onClick={() => {
+              if (!selected) navigate(tab.path)
+            }}
             aria-current={selected ? 'page' : undefined}
-            className={`gap-[7.5px] flex flex-1 flex-col items-center justify-center rounded-[100px] ${
+            className={`flex flex-1 flex-col items-center justify-center gap-[7.5px] rounded-[100px] transition-colors duration-200 ${
               selected ? 'bg-primary' : ''
             }`}
           >
@@ -56,7 +104,7 @@ export default function BottomNav({ current, onSelect }: BottomNavProps) {
               }`}
             />
             <span
-              className={`text-[10px] leading-normal font-medium tracking-[-0.2px] ${
+              className={`text-[10px] leading-normal font-medium ${
                 selected ? 'text-off-white' : 'text-text-secondary'
               }`}
             >

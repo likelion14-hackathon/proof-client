@@ -7,8 +7,13 @@ interface CycleProgressCardProps {
 
 export default function CycleProgressCard({ summary }: CycleProgressCardProps) {
   const { reservation } = HOME_SUMMARY.cycle
-  const { currentWeek, totalWeeks, progressRate, daysToMidReport, daysToFinalReport } =
-    summary
+  const {
+    currentWeek,
+    totalWeeks,
+    progressRate,
+    daysToMidReport,
+    daysToFinalReport,
+  } = summary
 
   const isMidReportNext = daysToMidReport > 0
   const midWeek = Math.round(totalWeeks / 2)
@@ -23,14 +28,14 @@ export default function CycleProgressCard({ summary }: CycleProgressCardProps) {
   return (
     <div className="w-full">
       <div className="border-nav-border bg-box-background rounded-t-[10px] border px-5 pt-5.5 pb-5.75">
-        <p className="text-text-secondary text-[13px] leading-4 font-medium tracking-[-0.26px]">
+        <p className="text-text-secondary text-[13px] leading-4 font-medium">
           {caption}
         </p>
-        <p className="text-text-primary mt-2.5 text-[18px] leading-5.5 font-semibold tracking-[-0.36px]">
+        <p className="text-text-primary mt-2.5 text-[18px] leading-5.5 font-semibold">
           {remaining}
         </p>
 
-        <p className="text-text-secondary mt-2.25 text-right text-[11px] leading-3.25 font-medium tracking-[-0.22px]">
+        <p className="text-text-secondary mt-2.25 text-right text-[11px] leading-3.25 font-medium">
           {weekLabel}
         </p>
 
@@ -39,7 +44,7 @@ export default function CycleProgressCard({ summary }: CycleProgressCardProps) {
             className="bg-primary flex h-full items-center justify-end rounded-[100px] pr-2.25"
             style={{ width: `${percentage}%` }}
           >
-            <span className="text-off-white text-[11px] leading-normal font-medium tracking-[-0.22px]">
+            <span className="text-off-white text-[11px] leading-normal font-medium">
               {percentage}%
             </span>
           </div>
@@ -47,13 +52,13 @@ export default function CycleProgressCard({ summary }: CycleProgressCardProps) {
       </div>
 
       <div className="border-nav-border bg-off-white flex h-9.75 items-center rounded-b-[10px] border-r border-b border-l px-4.5">
-        <span className="text-primary text-[13px] leading-normal font-semibold tracking-[-0.26px]">
+        <span className="text-primary text-[13px] leading-normal font-semibold">
           {reservation.status}
         </span>
-        <span className="text-text-primary ml-3.5 text-[13px] leading-normal font-medium tracking-[-0.26px]">
+        <span className="text-text-primary ml-3.5 text-[13px] leading-normal font-medium">
           {reservation.dateTime}
         </span>
-        <span className="text-text-secondary ml-auto text-[13px] leading-normal font-medium tracking-[-0.26px]">
+        <span className="text-text-secondary ml-auto text-[13px] leading-normal font-medium">
           {reservation.centerName}
         </span>
       </div>

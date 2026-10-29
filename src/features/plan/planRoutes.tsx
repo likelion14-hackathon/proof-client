@@ -1,13 +1,10 @@
-import { lazy } from 'react'
 import type { RouteObject } from 'react-router-dom'
-import { withSuspense } from '@/shared/utils/withSuspense'
-
-const PlanPage = lazy(() => import('@/features/plan/pages/PlanPage'))
+import { lazyPage } from '@/shared/utils/lazyPage'
 
 export const PlanRoutes: RouteObject[] = [
   {
     index: true,
-    element: withSuspense(<PlanPage />),
+    ...lazyPage(() => import('@/features/plan/pages/PlanPage')),
     handle: { title: '플랜' },
   },
 ]

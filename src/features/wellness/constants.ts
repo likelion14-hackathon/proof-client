@@ -1,3 +1,6 @@
+/** 연출용 공개 화면이 다음 화면으로 자동으로 넘어가기까지의 시간(ms) */
+export const WELLNESS_AUTO_ADVANCE_MS = 2400
+
 export const WELLNESS_INTRO = {
   eyebrow: '웰니스 지출 진단',
   title: ['낭비되고 있는', '피부 관리 지출 비용을 확인해보세요'],

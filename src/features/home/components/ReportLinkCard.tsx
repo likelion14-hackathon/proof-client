@@ -13,7 +13,7 @@ export default function ReportLinkCard() {
     >
       <span className="flex items-center gap-3.75">
         <img src={documentIcon} alt="" className="h-3.75 w-2.75" />
-        <span className="text-primary text-[14px] leading-normal font-semibold tracking-[-0.28px]">
+        <span className="text-primary text-[14px] leading-normal font-semibold">
           내 리포트 보기
         </span>
       </span>

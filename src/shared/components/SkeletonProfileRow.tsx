@@ -10,7 +10,7 @@ export default function SkeletonProfileRow({ name }: SkeletonProfileRowProps) {
     <div className="flex gap-2.5">
       <div className="bg-primary size-7.5 shrink-0 rounded-full" />
       <div className="min-w-0 flex-1">
-        <p className="text-text-primary mt-1.5 text-[15px] leading-4.5 font-semibold tracking-[-0.3px]">
+        <p className="text-text-primary mt-1.5 text-[15px] leading-4.5 font-semibold">
           {name}
         </p>
         <SkeletonBar className="mt-2 w-[45.7%]" />

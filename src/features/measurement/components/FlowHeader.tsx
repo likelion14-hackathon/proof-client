@@ -30,7 +30,7 @@ export default function FlowHeader({
 
   return (
     <div className="shrink-0 px-5">
-      <p className="text-text-secondary text-[15px] leading-4.5 font-semibold tracking-[-0.3px]">
+      <p className="text-text-secondary text-[15px] leading-4.5 font-semibold">
         {eyebrow}
       </p>
 
@@ -50,7 +50,7 @@ export default function FlowHeader({
               {chevronIcon}
             </span>
           ))}
-        <h1 className="text-text-primary min-w-0 text-[26px] leading-10 font-semibold tracking-[-0.52px] break-keep">
+        <h1 className="text-text-primary min-w-0 text-[26px] leading-10 font-semibold break-keep">
           {title}
         </h1>
       </div>

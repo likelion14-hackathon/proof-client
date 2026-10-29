@@ -19,7 +19,7 @@ export default function TouchableItemTextOnly({
       }`}
     >
       <span
-        className={`w-full text-[16px] leading-6.25 font-semibold tracking-[-0.32px] break-keep ${
+        className={`w-full text-[16px] leading-6.25 font-semibold break-keep ${
           selected ? 'text-off-white' : 'text-text-primary'
         }`}
       >

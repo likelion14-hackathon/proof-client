@@ -4,7 +4,7 @@ import BottomBar from '@/shared/components/BottomBar'
 import Logo from '@/shared/components/Logo'
 
 const ACTION_BUTTON =
-  'flex h-14.5 items-center justify-center rounded-[10px] text-[15px] font-semibold tracking-[-0.3px] shadow-[0px_0px_8.4px_0px_rgba(115,115,115,0.25)]'
+  'flex h-14.5 items-center justify-center rounded-[10px] text-[15px] font-semibold shadow-[0px_0px_8.4px_0px_rgba(115,115,115,0.25)]'
 
 export default function ReportRequestPage() {
   const navigate = useNavigate()

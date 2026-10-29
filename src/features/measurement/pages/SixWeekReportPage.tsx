@@ -70,10 +70,10 @@ export default function SixWeekReportPage({ report }: SixWeekReportPageProps) {
       <Logo />
 
       <div className="px-5">
-        <p className="text-text-secondary text-[15px] leading-normal font-semibold tracking-[-0.3px]">
+        <p className="text-text-secondary text-[15px] leading-normal font-semibold">
           {WEEK_REPORT_TITLE[0]}
         </p>
-        <h1 className="text-text-primary mt-2.75 text-[26px] leading-10 font-semibold tracking-[-0.52px] break-keep">
+        <h1 className="text-text-primary mt-2.75 text-[26px] leading-10 font-semibold break-keep">
           {WEEK_REPORT_TITLE[1]}
         </h1>
       </div>
@@ -81,7 +81,7 @@ export default function SixWeekReportPage({ report }: SixWeekReportPageProps) {
       <div className="mt-6.25 flex flex-col gap-6.25">
         <div className="px-5">
           <div className="border-primary rounded-[10px] border px-4.75 py-3">
-            <p className="text-primary text-[12px] leading-5 font-semibold tracking-[-0.24px] break-keep">
+            <p className="text-primary text-[12px] leading-5 font-semibold break-keep">
               {report.summary}
             </p>
           </div>
@@ -94,7 +94,7 @@ export default function SixWeekReportPage({ report }: SixWeekReportPageProps) {
         />
 
         <div>
-          <p className="text-text-primary px-5 text-[16px] leading-normal font-semibold tracking-[-0.32px]">
+          <p className="text-text-primary px-5 text-[16px] leading-normal font-semibold">
             {WEEK_REPORT_CONTRIBUTION_TITLE}
           </p>
 
@@ -108,10 +108,10 @@ export default function SixWeekReportPage({ report }: SixWeekReportPageProps) {
                     className="size-full"
                   />
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-                    <p className="text-primary text-[20px] leading-normal font-semibold tracking-[-0.4px]">
+                    <p className="text-primary text-[20px] leading-normal font-semibold">
                       {topContributor.name}
                     </p>
-                    <p className="text-text-secondary text-[16px] leading-normal font-medium tracking-[-0.32px]">
+                    <p className="text-text-secondary text-[16px] leading-normal font-medium">
                       <AnimatedNumber
                         value={topContributor.percentage}
                         suffix="% 기여"
@@ -135,7 +135,7 @@ export default function SixWeekReportPage({ report }: SixWeekReportPageProps) {
         </div>
 
         <div>
-          <p className="text-text-primary px-5 text-[16px] leading-normal font-semibold tracking-[-0.32px]">
+          <p className="text-text-primary px-5 text-[16px] leading-normal font-semibold">
             {WEEK_REPORT_COST_TITLE}
           </p>
 
@@ -157,14 +157,14 @@ export default function SixWeekReportPage({ report }: SixWeekReportPageProps) {
 
       <BottomBar>
         <div className="flex flex-col items-center gap-3.75">
-          <p className="text-nav-border rounded-full bg-[rgba(21,21,21,0.5)] px-4.75 py-2 text-center text-[13px] leading-normal font-semibold tracking-[-0.26px] backdrop-blur-[2px]">
+          <p className="text-nav-border rounded-full bg-[rgba(21,21,21,0.5)] px-4.75 py-2 text-center text-[13px] leading-normal font-semibold backdrop-blur-[2px]">
             {WEEK_REPORT_ACTIONS.pillLabel}
           </p>
           <div className="flex w-full gap-2.75">
             <button
               type="button"
               onClick={() => setShowKeepPlanWarning(true)}
-              className="bg-line text-text-primary flex h-14.5 flex-1 items-center justify-center rounded-[10px] text-[15px] font-semibold tracking-[-0.3px]"
+              className="bg-line text-text-primary flex h-14.5 flex-1 items-center justify-center rounded-[10px] text-[15px] font-semibold"
             >
               {WEEK_REPORT_ACTIONS.keepPlanLabel}
             </button>
@@ -175,7 +175,7 @@ export default function SixWeekReportPage({ report }: SixWeekReportPageProps) {
                   state: { mode: 'ADJUST' },
                 })
               }
-              className="bg-primary text-off-white flex h-14.5 flex-1 items-center justify-center rounded-[10px] text-[15px] font-semibold tracking-[-0.3px] shadow-[0px_0px_4.2px_0px_rgba(115,115,115,0.25)]"
+              className="bg-primary text-off-white flex h-14.5 flex-1 items-center justify-center rounded-[10px] text-[15px] font-semibold shadow-[0px_0px_4.2px_0px_rgba(115,115,115,0.25)]"
             >
               {WEEK_REPORT_ACTIONS.newPlanLabel}
             </button>

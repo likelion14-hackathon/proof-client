@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import PlanCostCards from '@/features/measurement/components/PlanCostCards'
 import PlanDetailSection from '@/features/measurement/components/PlanDetailSection'
 import PlanScoreCards from '@/features/measurement/components/PlanScoreCards'
@@ -11,13 +11,12 @@ import {
   formatManwon,
 } from '@/features/plan/utils'
 import { rankByLowest } from '@/features/measurement/priorityLabels'
-import { ApiError } from '@/shared/api/apiError'
-import BottomBar from '@/shared/components/BottomBar'
-import type { NavTabId } from '@/shared/components/BottomNav'
-import BottomNav from '@/shared/components/BottomNav'
-import Logo from '@/shared/components/Logo'
+import { getErrorMessage } from '@/shared/api/apiError'
+import InlineMessage from '@/shared/components/InlineMessage'
 import SkeletonBar from '@/shared/components/SkeletonBar'
+import SkeletonCard from '@/shared/components/SkeletonCard'
 import Toast from '@/shared/components/Toast'
+import TabPageLayout from '@/shared/layouts/TabPageLayout'
 
 interface PlanLocationState {
   /** 플랜을 새로 시작한 직후 한 번만 보여주는 안내 문구 */
@@ -25,18 +24,11 @@ interface PlanLocationState {
 }
 
 export default function PlanPage() {
-  const navigate = useNavigate()
   const location = useLocation()
   const { data: plan, isLoading, error } = useCurrentPlanDetail()
   const [toastMessage] = useState(
     () => (location.state as PlanLocationState | null)?.toast ?? null,
   )
-
-  const handleSelectTab = (id: NavTabId) => {
-    if (id === 'home') navigate('/')
-    if (id === 'info') navigate('/my')
-    if (id === 'record') navigate('/diary')
-  }
 
   const scores = plan?.metrics
     ? {
@@ -69,16 +61,23 @@ export default function PlanPage() {
     : ''
 
   return (
-    <div className="bg-off-white pb-bottom-bar min-h-screen-safe mx-auto w-full max-w-103.5">
-      <Logo />
-
+    <TabPageLayout
+      tab="plan"
+      bottomAccessory={
+        toastMessage && (
+          <div className="flex justify-center">
+            <Toast message={toastMessage} />
+          </div>
+        )
+      }
+    >
       <div>
         <div className="px-5">
-          <p className="text-text-secondary text-[15px] leading-4.5 font-semibold tracking-[-0.3px]">
+          <p className="text-text-secondary text-[15px] leading-4.5 font-semibold">
             현재 진행 중인 플랜
           </p>
           {plan ? (
-            <h1 className="text-text-primary mt-2.75 text-[26px] leading-10 font-semibold tracking-[-0.52px] break-keep">
+            <h1 className="text-text-primary mt-2.75 text-[26px] leading-10 font-semibold break-keep">
               {plan.planSummary}
             </h1>
           ) : (
@@ -91,18 +90,23 @@ export default function PlanPage() {
           )}
         </div>
 
+        {isLoading && (
+          <div className="mt-7.5 flex flex-col gap-4.25 px-5">
+            <SkeletonCard className="h-30" />
+            <SkeletonCard className="h-30" />
+          </div>
+        )}
+
         {!isLoading && plan === null && !error && (
-          <p className="text-text-secondary mt-7.5 px-5 text-[14px] font-medium break-keep">
+          <InlineMessage className="mt-7.5 px-5">
             진행 중인 플랜이 없어요. 플랜을 시작해보세요!
-          </p>
+          </InlineMessage>
         )}
 
         {error && (
-          <p className="text-highlight mt-7.5 px-5 text-[13px] font-semibold break-keep">
-            {error instanceof ApiError
-              ? error.message
-              : '플랜 정보를 불러오지 못했어요.'}
-          </p>
+          <InlineMessage tone="error" className="mt-7.5 px-5">
+            {getErrorMessage(error, '플랜 정보를 불러오지 못했어요.')}
+          </InlineMessage>
         )}
 
         {plan && (
@@ -124,17 +128,6 @@ export default function PlanPage() {
           </div>
         )}
       </div>
-
-      <BottomBar>
-        <div className="flex flex-col gap-3.75">
-          {toastMessage && (
-            <div className="flex justify-center">
-              <Toast message={toastMessage} />
-            </div>
-          )}
-          <BottomNav current="plan" onSelect={handleSelectTab} />
-        </div>
-      </BottomBar>
-    </div>
+    </TabPageLayout>
   )
 }

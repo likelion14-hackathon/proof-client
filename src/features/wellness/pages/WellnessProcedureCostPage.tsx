@@ -20,10 +20,10 @@ export default function WellnessProcedureCostPage() {
       <Logo />
 
       <div className="px-5">
-        <p className="text-text-secondary text-[15px] leading-4.5 font-semibold tracking-[-0.3px]">
+        <p className="text-text-secondary text-[15px] leading-4.5 font-semibold">
           {WELLNESS_PROCEDURE_COST.eyebrow}
         </p>
-        <h1 className="text-text-primary mt-2.75 text-[26px] leading-10 font-semibold tracking-[-0.52px] break-keep">
+        <h1 className="text-text-primary mt-2.75 text-[26px] leading-10 font-semibold break-keep">
           {WELLNESS_PROCEDURE_COST.title.join(' ')}
         </h1>
 

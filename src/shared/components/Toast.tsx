@@ -29,7 +29,7 @@ export default function Toast({ message }: ToastProps) {
 
   return (
     <p
-      className={`text-nav-border rounded-full bg-[rgba(21,21,21,0.5)] px-4.75 py-2 text-center text-[13px] leading-normal font-semibold tracking-[-0.26px] backdrop-blur-[2px] transition-opacity duration-300 ${
+      className={`text-nav-border rounded-full bg-[rgba(21,21,21,0.5)] px-4.75 py-2 text-center text-[13px] leading-normal font-semibold backdrop-blur-[2px] transition-opacity duration-300 ${
         phase === 'visible' ? 'opacity-100' : 'pointer-events-none opacity-0'
       }`}
       role="status"

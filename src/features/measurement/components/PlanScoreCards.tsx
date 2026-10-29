@@ -47,7 +47,7 @@ export default function PlanScoreCards({ scores }: PlanScoreCardsProps) {
           }`}
         >
           <p
-            className={`text-[12px] leading-4.5 font-semibold tracking-[-0.24px] ${
+            className={`text-[12px] leading-4.5 font-semibold ${
               metric.emphasized ? 'text-off-white-sub' : 'text-text-secondary'
             }`}
           >
@@ -55,14 +55,14 @@ export default function PlanScoreCards({ scores }: PlanScoreCardsProps) {
           </p>
           <div className="mt-2.75 flex items-end gap-0.5">
             <span
-              className={`text-[24px] leading-6 font-semibold tracking-[-0.48px] ${
+              className={`text-[24px] leading-6 font-semibold ${
                 metric.emphasized ? 'text-off-white' : 'text-text-primary'
               }`}
             >
               {metric.score}
             </span>
             <span
-              className={`text-[14px] leading-4.5 font-semibold tracking-[-0.28px] ${
+              className={`text-[14px] leading-4.5 font-semibold ${
                 metric.emphasized ? 'text-off-white-sub' : 'text-text-secondary'
               }`}
             >
@@ -70,7 +70,7 @@ export default function PlanScoreCards({ scores }: PlanScoreCardsProps) {
             </span>
           </div>
           <p
-            className={`mt-2.75 text-[12px] leading-4.5 font-semibold tracking-[-0.24px] ${
+            className={`mt-2.75 text-[12px] leading-4.5 font-semibold ${
               metric.emphasized ? 'text-off-white' : 'text-primary'
             }`}
           >

@@ -27,7 +27,7 @@ export default function AnalyzingCard() {
               </div>
             </div>
             <p
-              className={`mt-2.5 text-center text-[16px] leading-4.75 font-semibold tracking-[-0.32px] break-keep ${
+              className={`mt-2.5 text-center text-[16px] leading-4.75 font-semibold break-keep ${
                 metric.tone === 'primary' ? 'text-primary' : 'text-text-primary'
               }`}
             >

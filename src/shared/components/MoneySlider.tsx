@@ -27,7 +27,7 @@ export default function MoneySlider({
 
   return (
     <div className="w-full">
-      <div className="text-text-secondary flex justify-between text-[13px] leading-normal font-medium tracking-[-0.26px]">
+      <div className="text-text-secondary flex justify-between text-[13px] leading-normal font-medium">
         <span>{minLabel}</span>
         <span>{maxLabel}</span>
       </div>
@@ -52,7 +52,7 @@ export default function MoneySlider({
           className="pointer-events-none absolute top-full mt-1.75 flex w-7.5 justify-center"
           style={{ left: `calc((100% - 30px) * ${percent} / 100)` }}
         >
-          <p className="text-primary text-[13px] leading-normal font-medium tracking-[-0.26px] whitespace-nowrap">
+          <p className="text-primary text-[13px] leading-normal font-medium whitespace-nowrap">
             {formatWon(value, max, maxLabel)}
           </p>
         </div>

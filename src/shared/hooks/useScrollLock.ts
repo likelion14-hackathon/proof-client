@@ -8,6 +8,7 @@ type SavedStyles = {
   bodyTop: string
   bodyLeft: string
   bodyRight: string
+  scrollY: number
 }
 
 let lockCount = 0
@@ -25,6 +26,7 @@ const applyLock = () => {
     bodyTop: body.style.top,
     bodyLeft: body.style.left,
     bodyRight: body.style.right,
+    scrollY: window.scrollY,
   }
 
   html.style.overflow = 'hidden'
@@ -32,7 +34,8 @@ const applyLock = () => {
   html.style.overscrollBehavior = 'none'
 
   body.style.position = 'fixed'
-  body.style.top = '0'
+  // body를 fixed로 바꾸면 문서 스크롤이 0으로 돌아가므로, 현재 위치만큼 올려 두어 화면이 튀지 않게 한다.
+  body.style.top = `-${saved.scrollY}px`
   body.style.left = '0'
   body.style.right = '0'
 }
@@ -49,6 +52,7 @@ const releaseLock = () => {
   body.style.top = saved.bodyTop
   body.style.left = saved.bodyLeft
   body.style.right = saved.bodyRight
+  window.scrollTo(0, saved.scrollY)
   saved = null
 }
 
