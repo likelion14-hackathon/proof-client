@@ -32,6 +32,9 @@
 
 :root {
   color-scheme: light;
+  /* 상단 안전 영역. 보통은 env 값이고, iOS 홈 화면 앱에서 env가 0으로 잘못 나올 때만
+     syncSafeAreaTop()이 넣는 추정값(--safe-top-fallback)이 쓰인다. */
+  --safe-top: max(env(safe-area-inset-top), var(--safe-top-fallback, 0px));
 }
 
 html {

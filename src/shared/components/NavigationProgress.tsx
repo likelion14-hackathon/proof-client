@@ -12,7 +12,7 @@ export default function NavigationProgress() {
     <div
       role="progressbar"
       aria-label="화면을 불러오는 중"
-      className="pointer-events-none fixed inset-x-0 top-[env(safe-area-inset-top)] z-[60] h-0.5 overflow-hidden"
+      className="pointer-events-none fixed inset-x-0 top-[var(--safe-top)] z-[60] h-0.5 overflow-hidden"
     >
       <div className="bg-primary animate-nav-progress h-full w-1/3" />
     </div>

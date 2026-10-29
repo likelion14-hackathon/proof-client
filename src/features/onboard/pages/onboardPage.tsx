@@ -80,7 +80,7 @@ const OnboardingPage: React.FC = () => {
         </div>
 
         {/* 헤더 영역 */}
-        <header className="z-10 flex min-h-16 w-full items-center justify-start bg-neutral-800/30 px-5 pt-[env(safe-area-inset-top)]">
+        <header className="z-10 flex min-h-16 w-full items-center justify-start bg-neutral-800/30 px-5 pt-[var(--safe-top)]">
           <img
             src={proofLogo}
             alt="Proof Logo"

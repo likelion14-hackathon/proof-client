@@ -78,7 +78,7 @@ const ROUTE_GROUPS: { group: string; links: { path: string; title: string }[] }[
 
 export default function DevLinksPage() {
   return (
-    <div className="min-h-screen-safe mx-auto w-full max-w-103.5 bg-white px-5 pt-[calc(env(safe-area-inset-top)+20px)] pb-[max(35px,env(safe-area-inset-bottom))]">
+    <div className="min-h-screen-safe mx-auto w-full max-w-103.5 bg-white px-5 pt-[calc(var(--safe-top)+20px)] pb-[max(35px,env(safe-area-inset-bottom))]">
       <h1 className="text-xl font-bold">개발용 페이지 링크</h1>
       <p className="mt-1 text-sm text-neutral-500">
         PWA standalone 모드에서 주소창 없이 특정 화면으로 바로 이동할 때 사용하세요.

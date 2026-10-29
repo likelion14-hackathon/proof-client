@@ -7,7 +7,7 @@ import proofLogoDark from '@/shared/assets/icons/proof-logo-dark.svg'
  */
 export default function Logo() {
   return (
-    <header className="bg-off-white shrink-0 pt-[calc(env(safe-area-inset-top)+24px)] pb-12">
+    <header className="bg-off-white shrink-0 pt-[calc(var(--safe-top)+24px)] pb-12">
       <img
         src={proofLogoDark}
         alt="Proof"

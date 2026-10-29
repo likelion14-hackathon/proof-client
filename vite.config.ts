@@ -12,6 +12,8 @@ export default defineConfig({
     VitePWA({
       // 새 버전을 배포하면 다음 실행 때 자동으로 교체된다.
       registerType: 'autoUpdate',
+      // src/shared/pwa/registerServiceWorker.ts에서 직접 등록한다(업데이트 즉시 적용).
+      injectRegister: false,
       // 매니페스트는 public/manifest.json을 그대로 쓴다.
       manifest: false,
       workbox: {
